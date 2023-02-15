@@ -13,19 +13,16 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('appointments', function (Blueprint $table) {
+        Schema::create('messages', function (Blueprint $table) {
             $table->id();
             $table->string("doctorid");
             $table->string("doctorname");
             $table->string("patientid");
             $table->string("patientname");
-            $table->text("patientaddress");
-            $table->string("patientphone");
-            $table->string("patientgender");
-            $table->date("appointmentdate");
-            $table->string("specialization");
-            $table->string("patientpicture")->nullable();
-            $table->unsignedInteger('appointmentstatus')->default(0);
+            $table->string("appointmentid");
+            $table->string("message");
+            $table->string("doctorpicture");
+          
             $table->timestamps();
         });
     }

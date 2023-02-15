@@ -2,11 +2,12 @@
 
 use App\Models\Message;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\MeetController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\PatientController;
 use App\Http\Controllers\CustomAuthController;
 use App\Http\Controllers\AppointmentController;
-use App\Http\Controllers\AdminController;
 
 
 // LOGIN REGISTRATION ROUTE START
@@ -37,7 +38,10 @@ Route::get('Patient-registration', [CustomAuthController::class, 'PatientReg'])-
 Route::post('Doctor-reg-post', [CustomAuthController::class, 'DoctorRegPost'])->name('Doctor-reg-post');
 
 //patient registration submit
-Route::post('Patient-reg-post', [CustomAuthController::class, 'PatientRegPost'])->name('Patient-reg-post'); 
+Route::post('Patient-reg-post', [CustomAuthController::class, 'PatientRegPost'])->name('Patient-reg-post');
+
+
+
 
 
 //LOGIN REGISTRATION ROUTE END
@@ -68,6 +72,9 @@ Route::post('checkoutpost', [PatientController::class, 'checkoutpost'])->name('c
 
 //payment history get
 Route::get('payment.history/{id}', [PatientController::class, 'paymenthistory'])->name('payment.history');
+
+//patient get messages
+Route::get('patient/messages/{id}', [PatientController::class, 'patientmessage'])->name('patient.messages');
 
 
 //PATIENT ROUTE END
@@ -120,6 +127,18 @@ Route::get('delete.package/{id}', [AdminController::class, 'Deletepackage'])->na
 
 //for viewing doctor
 Route::get('DoctorsList', [DoctorController::class, 'Doctorslist'])->name('DoctorsList');
+
+//for viewing doctor
+Route::get('doctor/dashboard/{Did}', [DoctorController::class, 'dashboard'])->name('doctor.dashboard');
+
+
+Route::get('appointments/approve/{id}', [DoctorController::class, 'approve'])->name('appointments.approve');
+
+Route::get('appointments/delete/{id}', [DoctorController::class, 'delete'])->name('appointments.delete');
+
+Route::post('appointments/sendmessage', [DoctorController::class, 'sendmessage'])->name('appointments.sendmessage');
+
+
 
 
 //DOCTOR ROUTE END

@@ -21,7 +21,7 @@ th,tr{
 
     <div class="table-responsive">
         <table class="table  table-bordered table-hover">
-            <thead class="table-primary">
+            <thead class="table-dark">
                 <tr>
                     <th >Order ID</th>
                     <th >Patient ID</th>

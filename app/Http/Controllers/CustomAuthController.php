@@ -136,7 +136,20 @@ class CustomAuthController extends Controller
 
         if ($doctor && ($request->password == $doctor->password)) {
             session(['role' => 'doctor']);
-            return redirect('doctor/dashboard');
+            $request->session()->put('doctor', $doctor->role);
+            $request->session()->put('doctor_id', $doctor->id);
+            $request->session()->put('doctor_firstname', $doctor->firstname);
+            $request->session()->put('doctor_lastname', $doctor->lastname);
+            $request->session()->put('doctor_dob', $doctor->dob);
+            $request->session()->put('doctor_email', $doctor->email);
+            $request->session()->put('doctor_phone', $doctor->phone);
+            $request->session()->put('doctor_address', $doctor->address);
+            $request->session()->put('doctor_nid', $doctor->nid);
+            $request->session()->put('doctor_gender', $doctor->gender);
+            $request->session()->put('doctor_picture', $doctor->picture);
+            $Did = $request->session()->get('doctor_id');
+            
+            return redirect('doctor/dashboard/'.$Did);
         }
 
         if ($patient && ($request->password == $patient->password)) {
@@ -152,7 +165,7 @@ class CustomAuthController extends Controller
             $request->session()->put('patient_nid', $patient->nid);
             $request->session()->put('patient_gender', $patient->gender);
             $request->session()->put('patient_picture', $patient->picture);
-            
+            $Pid = $request->session()->get('Patient_id');
             return redirect('patient/dashboard');
         }
         else{

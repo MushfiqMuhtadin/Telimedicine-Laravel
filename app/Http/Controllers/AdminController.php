@@ -79,9 +79,10 @@ class AdminController extends Controller
 
     public function Deletepackage($id)
     {
+        
         $package = Healthpackages::find($id);
         $package->delete();
 
-        return redirect()->route('ViewpackageGet')->with('success', 'Package Deleted successfully');
+        return redirect()->route('doctor.dashboard')->with('success', 'appointment Deleted successfully');
     }
 }

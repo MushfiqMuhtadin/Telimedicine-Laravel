@@ -18,19 +18,11 @@
         rel="stylesheet">
 
     <!-- Custom styles for this template-->
-    <link href="{{ asset('assets/DoctorAsset/css/sb-admin-2.min.css') }}" rel="stylesheet">
-    <style>
-        .imgmama {
-            width: 100%;
-            height: 70px;
-            object-fit: cover;
-        }
-    </style>
+    <link href="{{asset('assets/DoctorAsset/css/sb-admin-2.min.css')}}" rel="stylesheet">
 
 </head>
 
 <body id="page-top">
-
 
     <!-- Page Wrapper -->
     <div id="wrapper">
@@ -78,9 +70,9 @@
 
             <!-- Nav Item - Tables -->
             <li class="nav-item">
-                <a class="nav-link" href="{{route('logout')}}">
+                <a class="nav-link" href="tables.html">
                     <i class="fas fa-fw fa-table"></i>
-                    <span>Logout</span></a>
+                    <span>Tables</span></a>
             </li>
 
         </ul>
@@ -93,8 +85,7 @@
             <div id="content">
 
                 <!-- Topbar -->
-                <nav style="background-color: #4e4ef59f; color: rgb(61, 53, 53);"
-                    class="navbar navbar-expand navbar-light  topbar mb-4 static-top shadow">
+                <nav style="background-color: #4e4ef59f; color: rgb(61, 53, 53);" class="navbar navbar-expand navbar-light  topbar mb-4 static-top shadow">
 
                     <!-- Sidebar Toggle (Topbar) -->
                     <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
@@ -102,22 +93,23 @@
                     </button>
 
                     <!-- Topbar Search -->
-                    <div class="mx-auto">
-                        <h3 class="">Doctor Dashboard</h1>
-                    </div>
-
+                <div class="mx-auto">
+                    <h3 class="">Doctor Dashboard</h1>
+                </div>
+                   
 
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
 
-
-
+                       
+                
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-dark">Douglas McGee</span>
-                                <img class="img-profile rounded-circle" src="img/undraw_profile.svg">
+                                <img class="img-profile rounded-circle"
+                                    src="img/undraw_profile.svg">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -149,21 +141,14 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-                    <center>
-                        @if (Session::has('success'))
-                            <h4 class="alert alert-success">{{ Session::get('success') }}</h4>
-                        @endif
-                        @if (Session::has('fail'))
-                            <div class="alert alert-dark">{{ Session::get('fail') }}</div>
-                        @endif
-                    </center>
+
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Welcome Doctor {{$doctor->firstname}}</h1>
+                        <h1 class="h3 mb-0 text-gray-800">Welcome Doctor</h1>
                     </div>
 
                     <!-- Content Row -->
-                    {{-- <div class="row">
+                    <div class="row">
 
                         <!-- Earnings (Monthly) Card Example -->
                         <div class="col-xl-3 col-md-6 mb-4">
@@ -247,197 +232,80 @@
                                 </div>
                             </div>
                         </div>
-                    </div> --}}
+                    </div>
 
                     <!-- Content Row -->
 
                     <div class="row">
 
-                        <!-- Appointment -->
-                        <div class="col-xl-9 col-lg-9">
+                        <!-- Area Chart -->
+                        <div class="col-xl-6 col-lg-6">
                             <div class="card shadow mb-4">
                                 <!-- Card Header - Dropdown -->
                                 <div
                                     class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                    <h3 class="m-0 font-weight-bold text-primary">Appointment Requests</h3>
-
-                                </div>
-                                <!-- Card Body -->
-                                <div class="card-body" style="height: 380px; overflow: scroll;">
-                                    <div class="chart-area ">
-                                        <div class="table-responsive">
-                                            @foreach ($appointment as $appointment)
-                                                <table class="table  table-bordered table-hover">
-                                                    <thead class="table-primary">
-                                                        <tr class="text-dark">
-                                                            <th>Apt ID</th>
-                                                            <th>Patient ID</th>
-                                                            <th>Doctor</th>
-                                                            <th>Patient Name</th>
-                                                            <th>Phone</th>
-                                                            <th>Gender</th>
-                                                            <th>Category</th>
-                                                            <th>date</th>
-                                                            <th>Status</th>
-                                                            <th>Action</th>
-
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr class="text-dark">
-                                                            <td>{{ $appointment->id }}</td>
-                                                            <td>{{ $appointment->patientid }}</td>
-                                                            <td>{{ $appointment->doctorname }}</td>
-                                                            <td>{{ $appointment->patientname }}</td>
-                                                            <td>{{ $appointment->patientphone }}</td>
-                                                            <td>{{ $appointment->patientgender }}</td>
-                                                            <td>{{ $appointment->specialization }}</td>
-                                                            <td>{{ $appointment->appointmentdate }}</td>
-                                                            <td>{{ $appointment->appointmentstatus == 0 ? 'Pending' : 'Approved' }}
-                                                            </td>
-                                                            <td class="d-flex p-4  ">
-                                                                @if ($appointment->appointmentstatus == 0)
-                                                                    <a href="{{ route('appointments.approve', $appointment->id) }}"
-                                                                        class="btn btn-success btn-sm mx-2">Approve</a>
-                                                                @else
-                                                                    <button class="btn btn-primary btn-sm"
-                                                                        disabled>Approved</button>
-                                                                @endif
-                                                                <a href="{{ route('appointments.delete', $appointment->id) }}"
-                                                                    class="btn btn-danger btn-sm mx-2">Delete</a>
-                                                            </td>
-                                            @endforeach
-                                            </tr>
-                                            </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        {{-- patients list --}}
-                        <div class="col-xl-3 col-lg-3">
-                            <div class="card shadow mb-4">
-                                <!-- Card Header - Dropdown -->
-                                <div
-                                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                    <h3 class="m-0 font-weight-bold text-primary">Admitted Patients List</h3>
-
+                                    <h6 class="m-0 font-weight-bold text-primary">Earnings Overview</h6>
+                                    
                                 </div>
                                 <!-- Card Body -->
                                 <div class="card-body">
                                     <div class="chart-area">
-                                        <div class="card-body" style="height: 350px; overflow: scroll;">
-                                            <div class="chart-area ">
-                                                <div class="table-responsive">
-                                                    @foreach ($patientlist as $patientlist)
-                                                        <table class="table  table-bordered table-hover">
-                                                            <thead class="table-primary">
-                                                                <tr class="text-dark">
-
-                                                                    <th>Apt Id</th>
-                                                                    <th>Patient Name</th>
-                                                                    <th>Picture</th>
-
-                                                                </tr>
-                                                            </thead>
-                                                            <tbody>
-                                                                <tr class="text-dark">
-                                                                    <td>{{ $patientlist->id }}</td>
-                                                                    <td>{{ $patientlist->patientname }}</td>
-                                                                    <td><img src="{{ asset('uploaded_images/' . $patientlist->patientpicture) }}"
-                                                                            class="imgmama bg-image hover-zoom "
-                                                                            alt="Doctor Image">
-                                                                    </td>
-
-                                                                </tr>
-                                                            </tbody>
-                                                        </table>
-                                                    @endforeach
-                                                </div>
-                                            </div>
-                                        </div>
+                                       <H1>hvfjkdjfdk</H1>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-xl-7 col-lg-5">
+                        <div class="col-xl-6 col-lg-6">
                             <div class="card shadow mb-4">
                                 <!-- Card Header - Dropdown -->
                                 <div
                                     class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                    <h3 class="m-0 font-weight-bold text-primary">Send Meeting Link</h3>
-
+                                    <h6 class="m-0 font-weight-bold text-primary">Earnings Overview</h6>
+                                    
                                 </div>
                                 <!-- Card Body -->
                                 <div class="card-body">
                                     <div class="chart-area">
-                                        <div class="table-responsive">
-                                            @foreach ($sendlink as $sendlink)
-                                                <table class="table  table-bordered table-hover">
-                                                    <thead class="table-primary">
-                                                        <tr class="text-dark">
-                                                            <th>Apt Id</th>
-                                                            <th>Patient Name</th>
-                                                            <th>PID</th>
-                                                            <th>Picture</th>
-                                                            <th>Status</th>
-                                                            <th>Meeting Link</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr class="text-dark">
-                                                            <td>{{ $sendlink->id }}</td>
-                                                            <td>{{ $sendlink->patientname }}</td>
-                                                            <td>{{ $sendlink->patientid }}</td>
-                                                            <td><img src="{{ asset('uploaded_images/' . $sendlink->patientpicture) }}"
-                                                                    class="imgmama bg-image hover-zoom "
-                                                                    alt="Doctor Image">
-                                                            </td>
-                                                            <td>{{ $sendlink->appointmentstatus }}</td>
-                                                            <td>
-                                                                @if ($sendlink->appointmentstatus === 1)
-                                                                    <form action="{{ route('appointments.sendmessage') }}"
-                                                                        method="post" >
-                                                                        @csrf
-                                                                        <input type="hidden" id="appointmentid" name="appointmentid" value="{{$sendlink->id}}">
-
-                                                                        <input class="mb-2 form-control input-lg" type="text" name="message" id="message"
-                                                                            placeholder="Paste meeting Link here"> 
-                                                                        <button class="btn btn-primary btn-s" type="submit">Send Link</button>
-                                                                    </form>
-                                                                @endif
-                                                            </td>
-
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            @endforeach
-                                        </div>
+                                       <H1>hvfjkdjfdk</H1>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-xl-5 col-lg-5">
+                        <div class="col-xl-6 col-lg-6">
                             <div class="card shadow mb-4">
                                 <!-- Card Header - Dropdown -->
                                 <div
                                     class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                    <h3 class="m-0 font-weight-bold text-primary">Prescribe Patients</h3>
-
+                                    <h6 class="m-0 font-weight-bold text-primary">Earnings Overview</h6>
+                                    
                                 </div>
                                 <!-- Card Body -->
                                 <div class="card-body">
                                     <div class="chart-area">
-                                       
+                                       <H1>hvfjkdjfdk</H1>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-6 col-lg-6">
+                            <div class="card shadow mb-4">
+                                <!-- Card Header - Dropdown -->
+                                <div
+                                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                    <h6 class="m-0 font-weight-bold text-primary">Earnings Overview</h6>
+                                    
+                                </div>
+                                <!-- Card Body -->
+                                <div class="card-body">
+                                    <div class="chart-area">
+                                       <H1>hvfjkdjfdk</H1>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-
-
+                       
+                        
                     </div>
 
                 </div>
@@ -445,8 +313,6 @@
 
             </div>
             <!-- End of Main Content -->
-
-
 
             <!-- Footer -->
             <footer class="sticky-footer bg-white">
@@ -472,21 +338,21 @@
 
 
     <!-- Bootstrap core JavaScript-->
-    <script src="{{ asset('assets/DoctorAsset/vendor/jquery/jquery.min.js') }}"></script>
-    <script src="{{ asset('assets/DoctorAsset/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{asset('assets/DoctorAsset/vendor/jquery/jquery.min.js')}}"></script>
+    <script src="{{asset('assets/DoctorAsset/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 
     <!-- Core plugin JavaScript-->
-    <script src="{{ asset('assets/DoctorAsset/vendor/jquery-easing/jquery.easing.min.js') }}"></script>
+    <script src="{{asset('assets/DoctorAsset/vendor/jquery-easing/jquery.easing.min.js')}}"></script>
 
     <!-- Custom scripts for all pages-->
-    <script src="{{ asset('assets/DoctorAsset/js/sb-admin-2.min.js') }}"></script>
+    <script src="{{asset('assets/DoctorAsset/js/sb-admin-2.min.js')}}"></script>
 
     <!-- Page level plugins -->
-    <script src="{{ asset('assets/DoctorAsset/vendor/chart.js/Chart.min.js') }}"></script>
+    <script src="{{asset('assets/DoctorAsset/vendor/chart.js/Chart.min.js')}}"></script>
 
     <!-- Page level custom scripts -->
-    <script src="{{ asset('assets/DoctorAsset/js/demo/chart-area-demo.js') }}"></script>
-    <script src="{{ asset('assets/DoctorAsset/js/demo/chart-pie-demo.js') }}"></script>
+    <script src="{{asset('assets/DoctorAsset/js/demo/chart-area-demo.js')}}"></script>
+    <script src="{{asset('assets/DoctorAsset/js/demo/chart-pie-demo.js')}}"></script>
 
 </body>
 

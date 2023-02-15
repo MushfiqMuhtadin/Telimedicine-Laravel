@@ -16,37 +16,44 @@
             height: 200px;
             object-fit: cover;
         }
-         a{
+
+        a {
             text-decoration: none;
         }
     </style>
 </head>
 
-<body  style="background-color: rgba(185, 230, 248, 0.431)" >
+<body style="background-color: rgba(185, 230, 248, 0.431)">
 
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-medium-blue">
-        <a class="navbar-brand text-white" href="#">Patient Dashboard</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item active">
-                    <a class="nav-link text-white" href="#">Home</a>
+
+        <div class="collapse navbar-collapse  d-flex justify-content-between">
+            <a class="navbar-brand text-white mx-3" href="{{ route('patient/dashboard') }}">Patient Dashboard</a>
+            <ul class="navbar-nav ">
+                <li class="navbar-brand active">
+                    <a class="nav-link text-white" href="{{ route('index') }}">Home</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white" href="{{ url('appointment.history/' . $patientid) }}">Appointment History</a>
+                <li class="navbar-brand">
+                    <a class="nav-link text-white" href="{{ url('appointment.history/' . $patientid) }}">Appointment
+                        History</a>
                 </li>
-                <li class="nav-item">
+                <li class="navbar-brand">
                     <a class="nav-link text-white" href="{{ url('payment.history/' . $patientid) }}">Payment History</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white" href="{{ url('patient/dashboard/profile/' . $patientid) }}">Profile</a>
+                <li class="navbar-brand">
+                    <a class="nav-link text-white"
+                        href="{{ url('patient/dashboard/profile/' . $patientid) }}">Profile</a>
                 </li>
+
             </ul>
-            <h3 class="text-white"><a href="{{route('logout')}}">LOGOUT</a></h3>
+
+            <div class="d-flex px-3 ">
+                <h3 class="navbar-brand text-white"><a class="text-white"
+                        href="{{ url('patient/messages/' . $patientid) }}">Messages({{$datacount}})</a></h3>
+                <h3 class="navbar-brand text-white"><a href="{{ route('logout') }}">LOGOUT</a></h3>
+
+            </div>
         </div>
     </nav>
 
@@ -78,7 +85,8 @@
                             <h6 class="card-text">Address: {{ $doctor['address'] }}</h6>
                             <h6 class="card-text">Phone: {{ $doctor['phone'] }}</h6>
                             <button class=" btn btn-primary">
-                            <a style="text-decoration: none" class="text-white" href="{{ url('appointments/' . $doctor->id) }}">Make Appointment</a>
+                                <a style="text-decoration: none" class="text-white"
+                                    href="{{ url('appointments/' . $doctor->id) }}">Make Appointment</a>
                             </button>
                         </div>
                     </div>
@@ -94,26 +102,30 @@
     </section>
 
     <section class="mx-5">
-         <h1 class="text-center">Care Packages</h1> <br>
-          <div class="row">
+        <h1 class="text-center">Care Packages</h1> <br>
+        <div class="row">
             @foreach ($package as $index => $package)
-               
                 <div class="col-12 col-lg-4 d-flex justify-content-center ">
-                    <div style="background-color: #eaf5fa6a; width:70% " class="card mb-5 mx-2 shadow-lg p-3 mb-5  rounded">
+                    <div style="background-color: #eaf5fa6a; width:70% "
+                        class="card mb-5 mx-2 shadow-lg p-3 mb-5  rounded">
                         <img src="{{ asset('uploaded_images/' . $package->picture) }}"
                             class="imgmama bg-image hover-zoom " alt="Doctor Image">
                         <div class="card-body">
                             <h4 class="card-title text-primary">{{ $package['name'] }}</h4>
-                            <h5 class="card-title card-text text-dark ">Type: <span class="text-success">{{ $package['type']}}</span></h5>
+                            <h5 class="card-title card-text text-dark ">Type: <span
+                                    class="text-success">{{ $package['type'] }}</span></h5>
 
-                            <h6 class="card-text text-success ">Description: <span class="text-primary" > {{ $package['description'] }}</span> </h6>
-                            <h6 class="card-text  text-success fs-5">Price: <span class="fs-4" >{{ $package['price'] }}</span>$ </h6>
-    
+                            <h6 class="card-text text-success ">Description: <span class="text-primary">
+                                    {{ $package['description'] }}</span> </h6>
+                            <h6 class="card-text  text-success fs-5">Price: <span
+                                    class="fs-4">{{ $package['price'] }}</span>$ </h6>
+
                             <div class="d-flex justify-content-start">
-                                <button  class="btn btn-primary btn-sm mt-2"> <a class="mx-3 text-white fs-5" href="{{ url('checkout/' . $package->id) }}">Buy</a></button>
+                                <button class="btn btn-primary btn-sm mt-2"> <a class="mx-3 text-white fs-5"
+                                        href="{{ url('checkout/' . $package->id) }}">Buy</a></button>
 
                             </div>
-                          
+
                         </div>
                     </div>
                 </div>
