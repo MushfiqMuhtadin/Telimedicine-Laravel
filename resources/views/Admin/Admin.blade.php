@@ -18,9 +18,17 @@
         rel="stylesheet">
 
     <!-- Custom styles for this template-->
-    <link href="{{asset('assets/DoctorAsset/css/sb-admin-2.min.css')}}" rel="stylesheet">
+    <link href="{{ asset('assets/DoctorAsset/css/sb-admin-2.min.css') }}" rel="stylesheet">
+
+
 
 </head>
+<style>
+    a {
+        color: rgb(22, 22, 22);
+        text-decoration: none;
+    }
+</style>
 
 <body id="page-top">
 
@@ -28,14 +36,15 @@
     <div id="wrapper">
 
         <!-- Sidebar -->
-        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+        <ul style="background-color: #4ef2f59f" class="navbar-nav text-dark  sidebar sidebar-dark accordion"
+            id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">Medic Care</div>
+                <div class=" fs-2 text-dark mx-3">Medic Care</div>
             </a>
 
             <!-- Divider -->
@@ -45,34 +54,34 @@
             <li class="nav-item active">
                 <a class="nav-link" href="index.html">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Dashboard</span></a>
+                    <span class="text-dark">Dashboard</span></a>
             </li>
 
             <!-- Nav Item - Charts -->
-            <li class="nav-item">
+            <li class="nav-item active">
                 <a class="nav-link" href="charts.html">
                     <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Charts</span></a>
+                    <span class=" text-dark">Charts</span></a>
             </li>
 
             <!-- Nav Item - Tables -->
-            <li class="nav-item">
+            <li class="nav-item active">
                 <a class="nav-link" href="tables.html">
                     <i class="fas fa-fw fa-table"></i>
-                    <span>Tables</span></a>
+                    <span class=" text-dark">Tables</span></a>
             </li>
             <!-- Nav Item - Charts -->
-            <li class="nav-item">
+            <li class="nav-item active">
                 <a class="nav-link" href="charts.html">
                     <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Charts</span></a>
+                    <span class=" text-dark">Charts</span></a>
             </li>
 
             <!-- Nav Item - Tables -->
-            <li class="nav-item">
+            <li class="nav-item active">
                 <a class="nav-link" href="tables.html">
                     <i class="fas fa-fw fa-table"></i>
-                    <span>Tables</span></a>
+                    <span class=" text-dark">Tables</span></a>
             </li>
 
         </ul>
@@ -85,7 +94,8 @@
             <div id="content">
 
                 <!-- Topbar -->
-                <nav style="background-color: #4e4ef59f; color: rgb(61, 53, 53);" class="navbar navbar-expand navbar-light  topbar mb-4 static-top shadow">
+                <nav style="background-color: #4ef2f59f; color: rgb(61, 53, 53);"
+                    class="navbar navbar-expand navbar-light  topbar mb-4 static-top shadow">
 
                     <!-- Sidebar Toggle (Topbar) -->
                     <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
@@ -93,45 +103,20 @@
                     </button>
 
                     <!-- Topbar Search -->
-                <div class="mx-auto">
-                    <h3 class="">Doctor Dashboard</h1>
-                </div>
-                   
+                    <div class="mx-2">
+                        <h4 class="">Admin Dashboard</h4>
+                    </div>
+
 
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
 
-                       
-                
+
+
                         <!-- Nav Item - User Information -->
-                        <li class="nav-item dropdown no-arrow">
-                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-dark">Douglas McGee</span>
-                                <img class="img-profile rounded-circle"
-                                    src="img/undraw_profile.svg">
-                            </a>
-                            <!-- Dropdown - User Information -->
-                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Profile
-                                </a>
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Settings
-                                </a>
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Activity Log
-                                </a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
-                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Logout
-                                </a>
-                            </div>
+                        <li class="nav-item dropdown no-arrow d-flex mx-3">
+                            <h5 class="mx-4"><a href="">Profile</a> </h5>
+                            <h5><a href="">Logout</a></h5>
                         </li>
 
                     </ul>
@@ -141,10 +126,18 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
+                    <center>
+                        @if (Session::has('success'))
+                            <h4 class="alert alert-success">{{ Session::get('success') }}</h4>
+                        @endif
+                        @if (Session::has('fail'))
+                            <div class="alert alert-dark">{{ Session::get('fail') }}</div>
+                        @endif
+                    </center>
 
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Welcome Doctor</h1>
+                        <h1 class="h3 mb-0 text-gray-800">Welcome Admin</h1>
                     </div>
 
                     <!-- Content Row -->
@@ -238,74 +231,129 @@
 
                     <div class="row">
 
-                        <!-- Area Chart -->
                         <div class="col-xl-6 col-lg-6">
                             <div class="card shadow mb-4">
-                                <!-- Card Header - Dropdown -->
+                                <!-- Crud packages -->
                                 <div
                                     class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                    <h6 class="m-0 font-weight-bold text-primary">Earnings Overview</h6>
-                                    
+                                    <h4 class="m-0 font-weight-bold text-primary">CRUD packages</h4>
+
                                 </div>
                                 <!-- Card Body -->
                                 <div class="card-body">
-                                    <div class="chart-area">
-                                       <H1>hvfjkdjfdk</H1>
+                                    <div class="chart-area d-flex justify-content-center align-items-center">
+                                        <center><button style="height: 280px;width:600px; font-size:30px"
+                                                class="btn btn-warning btn-lg"><a
+                                                    style="text-decoration: none; color:black"
+                                                    href="{{ route('ViewpackageGet') }}">Crud Packages</a></button>
+                                        </center>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="col-xl-6 col-lg-6">
                             <div class="card shadow mb-4">
-                                <!-- Card Header - Dropdown -->
+                                <!-- Payment History-->
                                 <div
                                     class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                    <h6 class="m-0 font-weight-bold text-primary">Earnings Overview</h6>
-                                    
+                                    <h4 class="m-0 font-weight-bold text-primary">Earnings Overview</h4>
+
                                 </div>
                                 <!-- Card Body -->
                                 <div class="card-body">
                                     <div class="chart-area">
-                                       <H1>hvfjkdjfdk</H1>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-6 col-lg-6">
-                            <div class="card shadow mb-4">
-                                <!-- Card Header - Dropdown -->
-                                <div
-                                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                    <h6 class="m-0 font-weight-bold text-primary">Earnings Overview</h6>
-                                    
-                                </div>
-                                <!-- Card Body -->
-                                <div class="card-body">
-                                    <div class="chart-area">
-                                       <H1>hvfjkdjfdk</H1>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-6 col-lg-6">
-                            <div class="card shadow mb-4">
-                                <!-- Card Header - Dropdown -->
-                                <div
-                                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                    <h6 class="m-0 font-weight-bold text-primary">Earnings Overview</h6>
-                                    
-                                </div>
-                                <!-- Card Body -->
-                                <div class="card-body">
-                                    <div class="chart-area">
-                                       <H1>hvfjkdjfdk</H1>
+                                        <div class="chart-area d-flex justify-content-center align-items-center">
+                                            <center><button style="height: 280px;width:600px; font-size:30px"
+                                                    class="btn btn-danger btn-lg"><a
+                                                        style="text-decoration: none; color:rgb(255, 255, 255)"
+                                                        href="{{ route('earning.history') }}">Earnings</a></button>
+                                            </center>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                       
-                        
+                        <!-- View users -->
+                        <div class="col-xl-6 col-lg-6">
+                            <div class="card shadow mb-4">
+                                <!-- Card Header - Dropdown -->
+                                <div
+                                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                    <h4 class="m-0 font-weight-bold text-primary">View Patients</h4>
+
+                                </div>
+                                <!-- Card Body -->
+                                <div class="card-body">
+                                    <div class="chart-area d-flex justify-content-center align-items-center">
+                                        <center><button style="height: 280px;width:600px; font-size:30px"
+                                                class="btn btn-primary btn-lg"><a
+                                                    style="text-decoration: none; color:rgb(255, 255, 255)"
+                                                    href="{{ route('show.patient') }}">Patients</a></button></center>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-6 col-lg-6">
+                            <div class="card shadow mb-4">
+                                <!-- view doctor -->
+                                <div
+                                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                    <h4 class="m-0 font-weight-bold text-primary">View Doctors</h4>
+
+                                </div>
+                                <!-- Card Body -->
+                                <div class="card-body">
+                                    <div class="chart-area d-flex justify-content-center align-items-center">
+                                        <center><button style="height: 280px;width:600px; font-size:30px"
+                                                class="btn btn-success btn-lg"><a
+                                                    style="text-decoration: none; color:rgb(255, 255, 255)"
+                                                    href="{{ route('show.doctor') }}">Doctors</a></button></center>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- View appointments -->
+                        <div class="col-xl-6 col-lg-6">
+                            <div class="card shadow mb-4">
+                                <!-- Card Header - Dropdown -->
+                                <div
+                                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                    <h4 class="m-0 font-weight-bold text-primary">View Appointment</h4>
+
+                                </div>
+                                <!-- Card Body -->
+                                <div class="card-body">
+                                    <div class="chart-area d-flex justify-content-center align-items-center">
+                                        <center><button style="height: 280px;width:600px; font-size:30px"
+                                                class="btn btn-success btn-lg"><a
+                                                    style="text-decoration: none; color:rgb(255, 255, 255)"
+                                                    href="{{ route('show.appointment') }}">appointments</a></button></center>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-6 col-lg-6">
+                            <div class="card shadow mb-4">
+                                <!-- view Contact Information -->
+                                <div
+                                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                    <h4 class="m-0 font-weight-bold text-primary">View Contact information</h4>
+
+                                </div>
+                                <!-- Card Body -->
+                                <div class="card-body">
+                                    <div class="chart-area d-flex justify-content-center align-items-center">
+                                        <center><button style="height: 280px;width:600px; font-size:30px"
+                                                class="btn btn-warning btn-lg">Contact Info</button></center>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
                     </div>
 
                 </div>
@@ -338,21 +386,21 @@
 
 
     <!-- Bootstrap core JavaScript-->
-    <script src="{{asset('assets/DoctorAsset/vendor/jquery/jquery.min.js')}}"></script>
-    <script src="{{asset('assets/DoctorAsset/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+    <script src="{{ asset('assets/DoctorAsset/vendor/jquery/jquery.min.js') }}"></script>
+    <script src="{{ asset('assets/DoctorAsset/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 
     <!-- Core plugin JavaScript-->
-    <script src="{{asset('assets/DoctorAsset/vendor/jquery-easing/jquery.easing.min.js')}}"></script>
+    <script src="{{ asset('assets/DoctorAsset/vendor/jquery-easing/jquery.easing.min.js') }}"></script>
 
     <!-- Custom scripts for all pages-->
-    <script src="{{asset('assets/DoctorAsset/js/sb-admin-2.min.js')}}"></script>
+    <script src="{{ asset('assets/DoctorAsset/js/sb-admin-2.min.js') }}"></script>
 
     <!-- Page level plugins -->
-    <script src="{{asset('assets/DoctorAsset/vendor/chart.js/Chart.min.js')}}"></script>
+    <script src="{{ asset('assets/DoctorAsset/vendor/chart.js/Chart.min.js') }}"></script>
 
     <!-- Page level custom scripts -->
-    <script src="{{asset('assets/DoctorAsset/js/demo/chart-area-demo.js')}}"></script>
-    <script src="{{asset('assets/DoctorAsset/js/demo/chart-pie-demo.js')}}"></script>
+    <script src="{{ asset('assets/DoctorAsset/js/demo/chart-area-demo.js') }}"></script>
+    <script src="{{ asset('assets/DoctorAsset/js/demo/chart-pie-demo.js') }}"></script>
 
 </body>
 

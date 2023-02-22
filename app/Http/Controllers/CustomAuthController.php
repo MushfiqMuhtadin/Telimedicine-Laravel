@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Admin;
 use App\Models\Doctor;
 use App\Models\Patient;
 use Illuminate\Http\Request;
@@ -132,6 +133,7 @@ class CustomAuthController extends Controller
 
         $doctor = Doctor::where('email', $request->email)->first();
         $patient = Patient::where('email', $request->email)->first();
+        $admin = Admin::where('email', $request->email)->first();
 
 
         if ($doctor && ($request->password == $doctor->password)) {
@@ -168,6 +170,24 @@ class CustomAuthController extends Controller
             $Pid = $request->session()->get('Patient_id');
             return redirect('patient/dashboard');
         }
+
+        if ($admin && ($request->password == $admin->password)) {
+            session(['role' => 'admin']);
+            $request->session()->put('admin', $admin->role);
+            $request->session()->put('admin_id', $admin->id);
+            $request->session()->put('admin_firstname', $admin->firstname);
+            $request->session()->put('admin_lastname', $admin->lastname);
+            $request->session()->put('admin_dob', $admin->dob);
+            $request->session()->put('admin_email', $admin->email);
+            $request->session()->put('admin_phone', $admin->phone);
+            $request->session()->put('admin_address', $admin->address);
+            $request->session()->put('admin_nid', $admin->nid);
+            $request->session()->put('admin_gender', $admin->gender);
+            $request->session()->put('admin_picture', $admin->picture);
+            $Aid = $request->session()->get('admin_id');
+            return redirect('admin/dashboard');
+        }
+
         else{
             return back()->with('fail', 'Incorrect email or Password');
         }

@@ -101,10 +101,13 @@ Route::get('appointment.history/{id}', [AppointmentController::class, 'Appointme
 //APPOINTMENT ROUTE END
 
 
+
 //ADMIN ROUTE START
 
 
-//ADMIN ROUTE END
+
+//Admin dashboard view
+Route::get('admin/dashboard', [AdminController::class, 'AdminDashboard'])->name('admin/dashboard');
 
 //createpackage view
 Route::get('CreatepackageView', [AdminController::class, 'CreatepackageView'])->name('CreatepackageView');
@@ -124,8 +127,19 @@ Route::put('update.package/{id}', [AdminController::class, 'Updatepackage'])->na
 //Deleteid
 Route::get('delete.package/{id}', [AdminController::class, 'Deletepackage'])->name('delete.package');
 
+//earnings
+Route::get('earning/history', [AdminController::class, 'earninghistory'])->name('earning.history');
 
+// total patient
+Route::get('show/patient', [AdminController::class, 'showpatient'])->name('show.patient');
 
+//total doctor
+Route::get('show/doctor', [AdminController::class, 'showdoctor'])->name('show.doctor');
+
+//total appointment
+Route::get('show/appointment', [AdminController::class, 'showappointment'])->name('show.appointment');
+
+//ADMIN ROUTE END
 
 
 //DOCTOR ROUTE START

@@ -45,7 +45,8 @@
     </center>
 
     <div class="container my-5 ">
-        <h1 class="text-center">Care Packages</h1> <br>
+        <h1 class="text-center">Care Packages</h1> <br> <br>
+        <center><a class="btn btn-success btn-lg" href="{{route('CreatepackageView')}}">Create package</a></center> <br><br>
         <div class="row">
             @foreach ($package as $index => $package)
                
