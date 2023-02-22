@@ -76,6 +76,12 @@ Route::get('payment.history/{id}', [PatientController::class, 'paymenthistory'])
 //patient get messages
 Route::get('patient/messages/{id}', [PatientController::class, 'patientmessage'])->name('patient.messages');
 
+//patient get prescription
+Route::get('patient/prescription/{id}', [PatientController::class, 'prescription'])->name('patient.prescription');
+
+Route::get('/prescriptions/{id}/download', [PatientController::class, 'prescriptionDownload'])->name('prescriptions.download');
+
+
 
 //PATIENT ROUTE END
 
@@ -131,12 +137,27 @@ Route::get('DoctorsList', [DoctorController::class, 'Doctorslist'])->name('Docto
 //for viewing doctor
 Route::get('doctor/dashboard/{Did}', [DoctorController::class, 'dashboard'])->name('doctor.dashboard');
 
+//doctor profile view with patientid passed through session
+Route::get('doctor/dashboard/profile/{id}', [DoctorController::class, 'DoctorProfile'])->name('doctor.profile');
+
+////patient edit profile view passed patient id
+Route::get('/doctor/dashboard/profile/{id}/edit',  [DoctorController::class, 'DoctorEditProfile'])->name('doctor.edit');
+
+//patient update profile submit
+Route::put('/doctor/dashboard/profile/{id}/update',  [DoctorController::class, 'doctorUpdateProfile'])->name('doctorprofile.update');
+
 
 Route::get('appointments/approve/{id}', [DoctorController::class, 'approve'])->name('appointments.approve');
 
 Route::get('appointments/delete/{id}', [DoctorController::class, 'delete'])->name('appointments.delete');
 
 Route::post('appointments/sendmessage', [DoctorController::class, 'sendmessage'])->name('appointments.sendmessage');
+
+Route::get('prescription/appointment/{id}', [DoctorController::class, 'prescription'])->name('prescription.appointment');
+
+Route::post('prescription/send', [DoctorController::class, 'SendPrescription'])->name('prescription.send');
+
+
 
 
 

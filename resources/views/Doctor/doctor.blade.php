@@ -39,7 +39,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{route('index')}}">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
@@ -51,29 +51,29 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="index.html">
+                <a class="nav-link" href="#meeting">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Dashboard</span></a>
+                    <span>Meeting</span></a>
             </li>
 
             <!-- Nav Item - Charts -->
             <li class="nav-item">
-                <a class="nav-link" href="charts.html">
+                <a class="nav-link" href="#appointment">
                     <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Charts</span></a>
+                    <span>Appointment</span></a>
             </li>
 
             <!-- Nav Item - Tables -->
             <li class="nav-item">
-                <a class="nav-link" href="tables.html">
+                <a class="nav-link" href="#prescription">
                     <i class="fas fa-fw fa-table"></i>
-                    <span>Tables</span></a>
+                    <span>Prescription</span></a>
             </li>
             <!-- Nav Item - Charts -->
             <li class="nav-item">
-                <a class="nav-link" href="charts.html">
+                <a class="nav-link" href="#patient">
                     <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Charts</span></a>
+                    <span>Patient</span></a>
             </li>
 
             <!-- Nav Item - Tables -->
@@ -102,8 +102,8 @@
                     </button>
 
                     <!-- Topbar Search -->
-                    <div class="mx-auto">
-                        <h3 class="">Doctor Dashboard</h1>
+                    <div class="mx-3">
+                       <h1 class="h3 mb-0 ">Welcome Doctor {{$doctor->firstname}}</h1>
                     </div>
 
 
@@ -116,26 +116,19 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-dark">Douglas McGee</span>
-                                <img class="img-profile rounded-circle" src="img/undraw_profile.svg">
+                                <h5 class="text-dark" > {{$doctor->firstname}}</h5>
+                                <img class="img-profile rounded-circle" src="{{ asset('uploaded_images/' . $doctor->picture) }}">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="#">
+                                <a class="dropdown-item" href="{{route('doctor.profile',$doctor->id)}}">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Profile
                                 </a>
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Settings
-                                </a>
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Activity Log
-                                </a>
+                               
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                                <a class="dropdown-item" href="{{route('logout')}}" data-toggle="modal" data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Logout
                                 </a>
@@ -159,11 +152,11 @@
                     </center>
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Welcome Doctor {{$doctor->firstname}}</h1>
+                        
                     </div>
 
                     <!-- Content Row -->
-                    {{-- <div class="row">
+                     <div class="row">
 
                         <!-- Earnings (Monthly) Card Example -->
                         <div class="col-xl-3 col-md-6 mb-4">
@@ -171,9 +164,9 @@
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                                Earnings (Monthly)</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">$40,000</div>
+                                            <div class="text-s font-weight-bold text-primary text-uppercase mb-1">
+                                                appointments</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{$appointmentcount}}</div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-calendar fa-2x text-gray-300"></i>
@@ -189,9 +182,43 @@
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                                Earnings (Annual)</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">$215,000</div>
+                                            <div class="text-s font-weight-bold text-success text-uppercase mb-1">
+                                                patients</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{$patientcount}}</div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Earnings (Monthly) Card Example -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-success shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-s font-weight-bold text-success text-uppercase mb-1">
+                                                Meetings</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{$meetingcount}}</div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Earnings (Monthly) Card Example -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-success shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-s font-weight-bold text-success text-uppercase mb-1">
+                                                Prescriptions</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{$prescriptioncount}}</div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -201,60 +228,14 @@
                             </div>
                         </div>
 
-                        <!-- Earnings (Monthly) Card Example -->
-                        <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-info shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Tasks
-                                            </div>
-                                            <div class="row no-gutters align-items-center">
-                                                <div class="col-auto">
-                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">50%</div>
-                                                </div>
-                                                <div class="col">
-                                                    <div class="progress progress-sm mr-2">
-                                                        <div class="progress-bar bg-info" role="progressbar"
-                                                            style="width: 50%" aria-valuenow="50" aria-valuemin="0"
-                                                            aria-valuemax="100"></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Pending Requests Card Example -->
-                        <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-warning shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                                Pending Requests</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-comments fa-2x text-gray-300"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div> --}}
+                       
 
                     <!-- Content Row -->
 
                     <div class="row">
 
                         <!-- Appointment -->
-                        <div class="col-xl-9 col-lg-9">
+                        <div class="col-xl-9 col-lg-9" id="appointment">
                             <div class="card shadow mb-4">
                                 <!-- Card Header - Dropdown -->
                                 <div
@@ -317,7 +298,7 @@
                         </div>
 
                         {{-- patients list --}}
-                        <div class="col-xl-3 col-lg-3">
+                        <div class="col-xl-3 col-lg-3" id="patient">
                             <div class="card shadow mb-4">
                                 <!-- Card Header - Dropdown -->
                                 <div
@@ -362,16 +343,18 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-xl-7 col-lg-5">
+                        {{-- Send meeting link --}}
+
+                        <div class="col-xl-7 col-lg-5" id="meeting">
                             <div class="card shadow mb-4">
-                                <!-- Card Header - Dropdown -->
+                                
                                 <div
                                     class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                                     <h3 class="m-0 font-weight-bold text-primary">Send Meeting Link</h3>
 
                                 </div>
                                 <!-- Card Body -->
-                                <div class="card-body">
+                                <div class="card-body"style="height: 350px; overflow: scroll;">
                                     <div class="chart-area">
                                         <div class="table-responsive">
                                             @foreach ($sendlink as $sendlink)
@@ -395,7 +378,7 @@
                                                                     class="imgmama bg-image hover-zoom "
                                                                     alt="Doctor Image">
                                                             </td>
-                                                            <td>{{ $sendlink->appointmentstatus }}</td>
+                                                            <td>{{ $sendlink->appointmentstatus == 0 ? 'Pending' : 'Approved' }}</td>
                                                             <td>
                                                                 @if ($sendlink->appointmentstatus === 1)
                                                                     <form action="{{ route('appointments.sendmessage') }}"
@@ -419,7 +402,8 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-xl-5 col-lg-5">
+                        {{-- send prescription --}}
+                        <div class="col-xl-5 col-lg-5" id="prescription">
                             <div class="card shadow mb-4">
                                 <!-- Card Header - Dropdown -->
                                 <div
@@ -428,8 +412,43 @@
 
                                 </div>
                                 <!-- Card Body -->
-                                <div class="card-body">
+                                <div class="card-body"style="height: 350px; overflow: scroll;">
                                     <div class="chart-area">
+                                         <div class="table-responsive">
+                                            @foreach ($prescription as $prescription)
+                                                <table class="table  table-bordered table-hover">
+                                                    <thead class="table-primary">
+                                                        <tr class="text-dark">
+                                                            <th>Apt Id</th>
+                                                            <th>Patient Name</th>
+                                                            <th>PID</th>
+                                                            <th>Picture</th>
+                                                            <th>Status</th>
+                                                            <th>Prescribe patient</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr class="text-dark">
+                                                            <td>{{ $prescription->id }}</td>
+                                                            <td>{{ $prescription->patientname }}</td>
+                                                            <td>{{ $prescription->patientid }}</td>
+                                                            <td><img src="{{ asset('uploaded_images/' . $prescription->patientpicture) }}"
+                                                                    class="imgmama bg-image hover-zoom "
+                                                                    alt="Doctor Image">
+                                                            </td>
+                                                            <td>{{ $prescription->appointmentstatus == 0 ? 'Pending' : 'Approved' }}</td>
+                                                            <td class="d-flex justify-content-center align-items-center p-4">
+                                                                @if ($prescription->appointmentstatus === 1)
+                                                                    <a href="{{ route('prescription.appointment',$prescription->id) }}"
+                                                                    class="btn btn-success  mx-2">Prescribe</a>
+                                                                @endif
+                                                            </td>
+
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            @endforeach
+                                        </div>
                                        
                                     </div>
                                 </div>

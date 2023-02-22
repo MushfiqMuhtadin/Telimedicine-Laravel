@@ -6,9 +6,12 @@ use App\Models\Doctor;
 use App\Models\Message;
 use App\Models\Patient;
 use App\Models\Payment;
+use App\Models\Prescription;
 use Illuminate\Http\Request;
 use App\Models\Healthpackages;
 use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
+use PDF;
 
 class PatientController extends Controller
 {
@@ -161,4 +164,24 @@ class PatientController extends Controller
            
             );
     }
+    public function prescription($id)
+    {
+        $prescription = Prescription::where('patientid', $id)->get();
+       
+        return view(
+            'Patient.prescription',[
+                'prescription' => $prescription,
+            ]
+           
+            );
+    }
+
+    public function prescriptionDownload($id)
+{
+    $prescription = Prescription::findOrFail($id);
+
+        $prescription = Prescription::findOrFail($id);
+        $pdf = PDF::loadView('prescriptionpdf', ['prescription' => $prescription]);
+        return $pdf->download('prescription.pdf');
+}
 }

@@ -16,12 +16,16 @@ th,tr{
 
 </style>
 
-<body>
-
+<body style="background-color: rgb(227, 251, 235)" >
+        <br>
+     <center>
+            <h1 class="text-primary">Payment History</h1>
+        </center>
+        <br>
 
     <div class="table-responsive">
         <table class="table  table-bordered table-hover">
-            <thead class="table-dark">
+            <thead class="table-success">
                 <tr>
                     <th >Order ID</th>
                     <th >Patient ID</th>

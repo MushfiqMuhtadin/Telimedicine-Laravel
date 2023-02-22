@@ -27,7 +27,13 @@
         }
     </style>
 
-    <body>
+    <body style="background-color: rgb(227, 251, 235)" >
+
+        <br>
+        <center>
+            <h1 class="text-primary">Appointment history</h1>
+        </center>
+        <br>
 
 
         <div class="table-responsive">
@@ -59,9 +65,9 @@
                             <td>{{ $appointment->appointmentdate }}</td>
                             <td>
                                 @if ($appointment->appointmentstatus == 0)
-                                    <button class="btn btn-warning" >PENDING</button>
+                                    <button class="btn btn-warning">PENDING</button>
                                 @else
-                                   <button class="btn btn-success" > APPROVED</button>
+                                    <button class="btn btn-success"> APPROVED</button>
                                 @endif
                             </td>
                         </tr>

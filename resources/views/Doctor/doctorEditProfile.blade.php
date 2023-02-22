@@ -8,47 +8,47 @@
    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
 
 </head>
-
 <body style="background-color: rgb(227, 251, 235)" >
  
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-             <br> <center><H1 class="text-primary" >Edit profile</H1></center><br>
+
+            <br> <center><H1 class="text-primary" >Edit profile</H1></center><br>
             <div class="card">
-          
+              
                 <div class="card-body">
-                    <form action="{{ route('patientprofile.update', $patient->id) }}" method="post" enctype="multipart/form-data">
+                    <form action="{{ route('doctorprofile.update', $doctor->id) }}" method="post" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
                         <div class="form-group">
                             <label  class="mt-3 fs-5 fw-semibold text-primary" for="firstname">First Name:</label>
-                            <input type="text" class="form-control" id="firstname" name="firstname" value="{{ $patient->firstname }}">
+                            <input type="text" class="form-control" id="firstname" name="firstname" value="{{ $doctor->firstname }}">
                         </div>
                         <div class="form-group">
                             <label  class="mt-3 fs-5 fw-semibold text-primary" for="lastname">Last Name:</label>
-                            <input type="text" class="form-control" id="lastname" name="lastname" value="{{ $patient->lastname }}">
+                            <input type="text" class="form-control" id="lastname" name="lastname" value="{{ $doctor->lastname }}">
                         </div>
                         <div class="form-group">
-                            <label class="mt-3 fs-5 fw-semibold text-primary" for="phone">Phone:</label>
-                            <input type="text" class="form-control" id="phone" name="phone" value="{{ $patient->phone }}">
+                            <label  class="mt-3 fs-5 fw-semibold text-primary" for="phone">Phone:</label>
+                            <input type="text" class="form-control" id="phone" name="phone" value="{{ $doctor->phone }}">
                         </div>
                         <div class="form-group">
-                            <label class="mt-3 fs-5 fw-semibold text-primary" for="address">Address:</label>
-                            <input type="text" class="form-control" id="address" name="address" value="{{ $patient->address }}">
+                            <label  class="mt-3 fs-5 fw-semibold text-primary" for="address">Address:</label>
+                            <input type="text" class="form-control" id="address" name="address" value="{{ $doctor->address }}">
                         </div>
                         <div class="form-group">
-                            <label class="mt-3 fs-5 fw-semibold text-primary" for="dob">Date of Birth:</label>
-                            <input type="date" class="form-control" id="dob" name="dob" value="{{ $patient->dob }}">
+                            <label  class="mt-3 fs-5 fw-semibold text-primary" for="dob">Date of Birth:</label>
+                            <input type="date" class="form-control" id="dob" name="dob" value="{{ $doctor->dob }}">
                         </div>
                         <div class="form-group">
-                            <label class="mt-3 fs-5 fw-semibold text-primary" for="nid">NID:</label>
-                            <input type="text" class="form-control" id="nid" name="nid" value="{{ $patient->nid }}">
+                            <label  class="mt-3 fs-5 fw-semibold text-primary" for="nid">NID:</label>
+                            <input type="text" class="form-control" id="nid" name="nid" value="{{ $doctor->nid }}">
                         </div>
                         <div class="form-group">
-                            <label class="mt-3 fs-5 fw-semibold text-primary" for="profile_picture">Profile Picture:</label>
-                            <input type="file" class="form-control" id="picture" name="picture" value="{{ $patient->picture }}"required>
-                        </div>
+                            <label  class="mt-3 fs-5 fw-semibold text-primary" for="profile_picture">Profile Picture:</label>
+                            <input type="file" class="form-control" id="picture" name="picture" value="{{ $doctor->picture }}"required>
+                        </div> 
                         <br>
                         <button type="submit" class="btn btn-primary">Update</button>
                     </form>
@@ -57,7 +57,6 @@
         </div>
     </div>
 </div>
-
 
 
 <script

@@ -17,36 +17,36 @@
     </style>
 </head>
 
-<body style="background-color: rgb(227, 251, 235)" >
-     <br>
+<body style="background-color: rgb(227, 251, 235)">
+    <br>
     <center>
         <h1 class="text-primary">My prescriptions</h1>
     </center>
     <br>
-
-    <div class="">
-<div class="table-responsive">
+    <div class="table-responsive">
 
         <table class="table  table-bordered table-hover">
             <thead class="table-primary">
                 <tr class="text-dark">
 
-                    <th>Doctor</th>
+                    <th>patient</th>
                     <th>Doctor name</th>
-                    <th class="">Appointment Id</th>
-                    <th>Google meet link</th>
+                    <th>Appointment Id</th>
+                    <th>Action</th>
 
                 </tr>
             </thead>
             <tbody>
 
                 <tr class="text-dark ">
-                    @foreach ($patientmsg as $patientmsg)
-                        <td><img src="{{ asset('uploaded_images/' . $patientmsg->doctorpicture) }}"
+                    @foreach ($prescription as $prescription)
+                        <td><img src="{{ asset('uploaded_images/' . $prescription->patientpicture) }}"
                                 class="imgmama bg-image hover-zoom " alt="Doctor Image"></td>
-                        <td>{{ $patientmsg->doctorname }}</td>
-                        <td>{{ $patientmsg->appointmentid }}</td>
-                        <td>{{ $patientmsg->message }}</td>
+                        <td>{{ $prescription->doctorname }}</td>
+                        <td>{{ $prescription->appointmentid }}</td>
+                        <td> <a href="{{ route('prescriptions.download', $prescription->id) }}" class="btn btn-primary">
+                                Download
+                            </a></td>
 
                 </tr>
                 @endforeach
@@ -54,8 +54,6 @@
         </table>
 
     </div>
-    </div>
-    
 </body>
 
 </html>
