@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Admin;
 use App\Models\Appointment;
+use App\Models\Contact;
 use App\Models\Doctor;
 use App\Models\Healthpackages;
 use App\Models\Payment;
@@ -13,7 +15,16 @@ use Illuminate\Support\Facades\Storage;
 class AdminController extends Controller
 {
     public function AdminDashboard(){
-        return view ('Admin.Admin');
+        $totalprice = Payment::sum('price');
+        $totaldoctor = Doctor::count();
+        $totalpatient = Patient::count();
+        $totalappointment = Appointment::count();
+        return view ('Admin.Admin',[
+            'totalprice'=>$totalprice,
+            'totaldoctor'=>$totaldoctor,
+            'totalpatient'=>$totalpatient,
+            'totalappointment'=>$totalappointment
+        ]);
     }
 
     public function CreatepackageView(){
@@ -46,9 +57,9 @@ class AdminController extends Controller
         $result = $package->save();
 
         if ($result) {
-            return redirect()->route('login')->with('success', 'success');
+            return redirect()->route('admin/dashboaard')->with('success', 'success');
         } else {
-            return redirect()->route('login')->with('fail', 'Something Wrong try again');
+            return redirect()->route('admin/dashboaard')->with('fail', 'Something Wrong try again');
         }
     }
 
@@ -140,6 +151,80 @@ class AdminController extends Controller
             [
                 'appointment' => $appointment,
                 
+            ]
+        );
+    }
+
+    public function getadmin()
+    {
+        return view(
+            'Admin.AdminSignup'
+        );
+    }
+
+    public function postadmin(Request $request)
+    {
+        $request->validate([
+            'role' => 'required',
+            'firstname' => 'required',
+            'lastname' => 'required',
+            'email' => 'required|email|unique:users',
+            'dob' => 'required',
+            'gender' => 'required',
+            'phone' => 'required',
+            'address' => 'required',
+            'nid' => 'required',
+            'password' => 'required|min:3|max:12',
+            'picture' => 'mimes:jpg,jpeg,png',
+        ]);
+
+        $user = new Admin();
+        $file_name = time() . "." . $request->file('picture')->getClientOriginalExtension();
+        $user->firstname = $request->firstname;
+        $user->lastname = $request->lastname;
+        $user->email = $request->email;
+        $user->dob = $request->dob;
+        $user->gender = $request->gender;
+        $user->phone = $request->phone;
+        $user->address = $request->address;
+        $user->nid = $request->nid;
+        $user->password = $request->password;
+        $user->role = $request->role;
+        $request->file('picture')->move(public_path('uploaded_images'), $file_name);
+        $user->picture = $file_name;
+        $result = $user->save();
+        if ($result) {
+            return redirect()->route('login')->with('success', 'Registration successful please Login');
+        } else {
+            return redirect()->route('login')->with('fail', 'Something Wrong try again');
+        }
+    }
+    public function contactus(Request $request)
+    {
+       
+        $user = new Contact();
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->phone = $request->phone;
+        $user->date = $request->date;
+        $user->message = $request->message;
+        $result = $user->save();
+        if ($result) {
+            return redirect()->route('login')->with('success', 'Our executives will reach you soon. For now please Login');
+        } else {
+            return redirect()->route('login')->with('fail', 'Something Wrong try again');
+        }
+    }
+
+    public function showcontact()
+    {
+        $patient = Contact::all();
+
+        return view(
+            'Admin.contactUs',
+            [
+                'patient' => $patient,
+
             ]
         );
     }

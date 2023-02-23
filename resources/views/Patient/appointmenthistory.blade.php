@@ -17,7 +17,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
-        <title>Document</title>
+        <title>Appointment History</title>
     </head>
     <style>
         th,
@@ -27,7 +27,7 @@
         }
     </style>
 
-    <body style="background-color: rgb(227, 251, 235)" >
+    <body style="background-color: rgb(227, 251, 235)">
 
         <br>
         <center>

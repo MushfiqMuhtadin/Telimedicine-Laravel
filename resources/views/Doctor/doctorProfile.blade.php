@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Profile</title>
+    <title>Doctor Profile</title>
 
     <!-- CSS only -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0/css/bootstrap.min.css"
@@ -47,7 +47,7 @@
                             <p class="text-muted mb-2">{{ $doctor->address }}</p>
                             <div class="d-flex justify-content-center mb-2">
                                 <button type="button" class="btn btn-primary "><a
-                                        href="{{route('doctor.edit',$doctor->id) }}">Edit
+                                        href="{{ route('doctor.edit', $doctor->id) }}">Edit
                                         Profile</a></button>
                             </div>
                         </div>

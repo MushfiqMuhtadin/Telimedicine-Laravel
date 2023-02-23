@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
-    <title>Signup</title>
+    <title>Patient Signup</title>
 </head>
 
 <body style="background-color: hsl(0, 0%, 96%)">
@@ -84,8 +84,8 @@
 
                                         <div class="col-md-6 mb-4">
                                             <div class="form-outline ">
-                                                <select class="form-select form-control fs-5 mb-2 "
-                                                    id="role" value="{{ old('role') }}" name="role">
+                                                <select class="form-select form-control fs-5 mb-2 " id="role"
+                                                    value="{{ old('role') }}" name="role">
                                                     <option disabled selected value>Role</option>
                                                     <option value="patient">Patient</option>
                                                 </select>
@@ -105,7 +105,7 @@
 
                                         <div class="form-group form-control">
 
-                                            <label class="fs-6 me-3  badge bg-primary text-wrap">Gender   </label> 
+                                            <label class="fs-6 me-3  badge bg-primary text-wrap">Gender </label>
                                             <div class="form-check form-check-inline  ">
                                                 <input class="form-check-input " type="radio" name="gender"
                                                     id="gender" value="male">
@@ -131,11 +131,11 @@
                                             </div>
 
                                         </div>
-                                         <span class=" bg-info text-wrap text-dark fs-6  mb-2">
-                                                    @error('gender')
-                                                        {{ $message }}
-                                                    @enderror
-                                                </span>
+                                        <span class=" bg-info text-wrap text-dark fs-6  mb-2">
+                                            @error('gender')
+                                                {{ $message }}
+                                            @enderror
+                                        </span>
 
                                     </div>
                                     <!-- email -->
@@ -251,16 +251,17 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-6 mt-0 mb-lg-0">
+                    <div class="col-lg-6 mb-5 mb-lg-0">
                         <h1 class="my-5 display-3 fw-bold ls-tight">
-                            The best offer <br />
-                            <span class="text-primary">for your business</span>
+                            Medic Care for<br />
+                            <span class="text-primary"> Quality medical care</span>
                         </h1>
-                        <p style="color: hsl(217, 10%, 50.8%)">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                            Eveniet, itaque accusantium odio, soluta, corrupti aliquam
-                            quibusdam tempora at cupiditate quis eum maiores libero
-                            veritatis? Dicta facilis sint aliquid ipsum atque?
+                        <p style="color: hsl(217, 30%, 46%)">
+                            Medic Care is a leading healthcare provider committed to delivering quality medical care to
+                            patients in a compassionate and personalized manner.
+                            Our team of experienced healthcare professionals offers a wide range of services, from
+                            routine check-ups to specialized treatments, to help our patients achieve optimal health
+                            outcomes.
                         </p>
                     </div>
                 </div>

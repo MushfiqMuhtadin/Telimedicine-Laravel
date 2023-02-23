@@ -42,15 +42,15 @@
                     <a class="nav-link text-white" href="{{ url('payment.history/' . $patientid) }}">Payment History</a>
                 </li>
                 <li class="navbar-brand">
-                    <a class="nav-link text-white"
-                        href="{{ url('patient/prescription/'.$patientid) }}">My prescriptions</a>
+                    <a class="nav-link text-white" href="{{ url('patient/prescription/' . $patientid) }}">My
+                        prescriptions</a>
                 </li>
 
             </ul>
 
             <div class="d-flex px-3 ">
                 <h3 class="navbar-brand text-white"><a class="text-white"
-                        href="{{ url('patient/messages/' . $patientid) }}">Messages({{$datacount}})</a></h3>
+                        href="{{ url('patient/messages/' . $patientid) }}">Messages({{ $datacount }})</a></h3>
                 <h3 class="navbar-brand text-white"><a class="text-white"
                         href="{{ url('patient/dashboard/profile/' . $patientid) }}">Profile</a></h3>
                 <h3 class="navbar-brand text-white"><a href="{{ route('logout') }}">LOGOUT</a></h3>

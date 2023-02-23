@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Checkout</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
 
@@ -149,17 +149,17 @@
         <div class="col-75">
 
             <div id="container">
-                <form action="{{route('checkoutpost')}}" method="post">
+                <form action="{{ route('checkoutpost') }}" method="post">
                     @csrf
                     <div class="row mt-3">
                         <div class="col-50">
-                            <h2 class="text-primary" >Billing Address</h2>
+                            <h2 class="text-primary">Billing Address</h2>
                             <label for="fname"><i class="fa fa-user"></i> Full Name</label>
                             <input class="fs-5" type="text" id="name" name="name" placeholder="John M. Doe"
                                 value="{{ $fullName }}" readonly>
 
-                            <input class="fs-5" type="hidden" id="patientid" name="patientid" 
-                                value="{{ $patientid}}" readonly>
+                            <input class="fs-5" type="hidden" id="patientid" name="patientid"
+                                value="{{ $patientid }}" readonly>
 
                             <label for="email"><i class="fa fa-envelope"></i> Email</label>
                             <input type="text" id="email" name="email" placeholder="john@example.com"
@@ -170,8 +170,7 @@
                                 value="{{ $patientaddress }}" readonly>
 
                             <label for="phone"><i class="fa fa-address-card-o"></i> phone</label>
-                            <input type="text" id="phone" name="phone" 
-                                value="{{ $patientphone }}" readonly>
+                            <input type="text" id="phone" name="phone" value="{{ $patientphone }}" readonly>
 
                             <label for="nid"><i class="fa fa-institution"></i> National ID</label>
                             <input type="text" id="nid" name="nid" placeholder="123456789"
@@ -192,7 +191,9 @@
                                                 alt="">
                                         </div>
                                         <div class="">
-                                            <input style="border: none" class="fw-bold fs-4 text-primary" type="text" id="packagename" name="packagename" value="{{$package->name}}" readonly>
+                                            <input style="border: none" class="fw-bold fs-4 text-primary" type="text"
+                                                id="packagename" name="packagename" value="{{ $package->name }}"
+                                                readonly>
                                             <h6>{{ $package->description }}</h6>
                                         </div>
                                     </div>
@@ -200,18 +201,19 @@
 
                                 <div class="div">
                                     <div class="col-50 d-flex justify-content-start align-items-center">
-                                        <h2 class="text-primary">Total Price: <span class="text-dark"> {{$package->price}}$</span> </h2>
-                                      
+                                        <h2 class="text-primary">Total Price: <span class="text-dark">
+                                                {{ $package->price }}$</span> </h2>
+
                                         <input class="fs-2 mt-3 fw-bold"
                                             style="width: 50%; border:none;  background-color: #f2f2f2;" type="hidden"
-                                            id="price" name="price"  value="{{ $package->price }}" readonly>
+                                            id="price" name="price" value="{{ $package->price }}" readonly>
                                     </div>
                                 </div>
                             </div>
 
 
                             <br>
-                            <h2 class="text-primary" >Payment</h2>
+                            <h2 class="text-primary">Payment</h2>
                             <label for="fname">Accepted Cards</label>
                             <div class="icon-container">
                                 <i class="fa fa-cc-visa" style="color:navy;"></i>
@@ -222,8 +224,8 @@
                             <label for="cname">Name on Card</label>
                             <input type="text" id="cardname" name="cardname" placeholder="John More Doe" required>
                             <label for="ccnum">Credit card number</label>
-                            <input type="text" id="cardnumber" name="cardnumber" placeholder="1111-2222-3333-4444"
-                                required>
+                            <input type="text" id="cardnumber" name="cardnumber"
+                                placeholder="1111-2222-3333-4444" required>
 
 
                             <div class="row">

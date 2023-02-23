@@ -9,26 +9,26 @@
     <title>Login</title>
 </head>
 
-<body  style="background-color: hsl(0, 0%, 96%)">
+<body style="background-color: hsl(0, 0%, 96%)">
     <!-- Section: Design Block -->
     <section class="">
         <!-- Jumbotron -->
         <div class="px-4 py-5 px-md-5 text-center text-lg-start" style="background-color: hsl(0, 0%, 96%)">
             <div class="container mt-5 "> <br>
                 <div class="row gx-lg-5 align-items-center">
-                    
+
 
                     <div class="col-lg-6 mb-5 mb-lg-0">
                         <div class="card">
                             <div class="card-body py-5 px-md-5">
-                                 <h1 class="text-primary display-5 fw-bold ls-tight text-center mb-5 ">
+                                <h1 class="text-primary display-5 fw-bold ls-tight text-center mb-5 ">
                                     Login<br />
-                                 </h1>
+                                </h1>
 
-                                <form  action="{{route('login-user')}}" method="post" >
+                                <form action="{{ route('login-user') }}" method="post">
 
-                                    {{@csrf_field()}}
-                                       
+                                    {{ @csrf_field() }}
+
                                     @if (Session::has('success'))
                                         <div class="alert alert-success">{{ Session::get('success') }}</div>
                                     @endif
@@ -38,41 +38,49 @@
 
                                     <!-- email -->
                                     <div class="form-outline mb-4 ">
-                                        <input type="email" id="email" name="email" class="form-control fs-5" placeholder="Email" value="{{old('email')}}"/>
+                                        <input type="email" id="email" name="email" class="form-control fs-5"
+                                            placeholder="Email" value="{{ old('email') }}" />
 
-                                         <span class="text-danger">
-                                            @error('email') {{$message}} @enderror
+                                        <span class="text-danger">
+                                            @error('email')
+                                                {{ $message }}
+                                            @enderror
                                         </span>
-                                      
+
                                     </div>
 
-                                     <!-- password -->
+                                    <!-- password -->
                                     <div class="form-outline mb-4 ">
-                                        <input type="password" id="password" name="password" class="form-control fs-5" placeholder="Password" />
+                                        <input type="password" id="password" name="password" class="form-control fs-5"
+                                            placeholder="Password" />
 
-                                         <span class="text-danger">
-                                            @error('password') {{$message}} @enderror
+                                        <span class="text-danger">
+                                            @error('password')
+                                                {{ $message }}
+                                            @enderror
                                         </span>
 
                                     </div>
 
                                     <!-- Checkbox -->
                                     <div class="form-check d-flex mb-4">
-                                        <input class="form-check-input me-2" type="checkbox" value="" id="form2Example33" checked />
+                                        <input class="form-check-input me-2" type="checkbox" value=""
+                                            id="form2Example33" checked />
                                         <label class="form-check-label" for="form2Example33">
                                             Remember me
                                         </label>
                                     </div>
 
                                     <!-- Submit button -->
-                                    
+
                                     <center>
                                         <button type="submit" class=" btn btn-primary btn-block mb-4 fs-5 fw-semibold">
-                                        Login
+                                            Login
                                         </button>
                                     </center> <br>
 
-                                    <h6>Haven't Created an account  ??  <span> <a class="text-decoration-none" href="{{route('registration')}}">Register Here</a></span></h6>
+                                    <h6>Haven't Created an account ?? <span> <a class="text-decoration-none"
+                                                href="{{ route('registration') }}">Register Here</a></span></h6>
 
                                 </form>
                             </div>
@@ -80,14 +88,15 @@
                     </div>
                     <div class="col-lg-6 mb-5 mb-lg-0">
                         <h1 class="my-5 display-3 fw-bold ls-tight">
-                            The best offer <br />
-                            <span class="text-primary">for your business</span>
+                            Medic Care for<br />
+                            <span class="text-primary"> Quality medical care</span>
                         </h1>
-                        <p style="color: hsl(217, 10%, 50.8%)">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                            Eveniet, itaque accusantium odio, soluta, corrupti aliquam
-                            quibusdam tempora at cupiditate quis eum maiores libero
-                            veritatis? Dicta facilis sint aliquid ipsum atque?
+                        <p style="color: hsl(217, 30%, 46%)">
+                            Medic Care is a leading healthcare provider committed to delivering quality medical care to
+                            patients in a compassionate and personalized manner.
+                            Our team of experienced healthcare professionals offers a wide range of services, from
+                            routine check-ups to specialized treatments, to help our patients achieve optimal health
+                            outcomes.
                         </p>
                     </div>
                 </div>

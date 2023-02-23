@@ -139,6 +139,21 @@ Route::get('show/doctor', [AdminController::class, 'showdoctor'])->name('show.do
 //total appointment
 Route::get('show/appointment', [AdminController::class, 'showappointment'])->name('show.appointment');
 
+//create admin view
+Route::get('create.admin', [AdminController::class, 'getadmin'])->name('create.admin');
+
+//Admin registration submit
+Route::post('post.admin', [AdminController::class, 'postadmin'])->name('post.admin');
+
+//Admin registration submit
+Route::post('contact.us', [AdminController::class, 'contactus'])->name('contact.us');
+
+// total patient
+Route::get('show.contact', [AdminController::class, 'showcontact'])->name('show.contact');
+
+
+
+
 //ADMIN ROUTE END
 
 

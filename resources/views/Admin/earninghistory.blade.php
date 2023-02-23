@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
-    <title>Document</title>
+    <title>Earning History</title>
 </head>
 <style>
     th,
@@ -61,10 +61,13 @@
                         $totalPayment += $payment->price; // add the price of this payment to the total
                     @endphp
                 @endforeach
-               
+
             </tbody>
         </table>
-        <center><h3 class="text-success">Total Earning =<span class=" fs-1 text-primary" > {{ $totalPayment }} $ </span> </h3></center>
+        <center>
+            <h3 class="text-success">Total Earning =<span class=" fs-1 text-primary"> {{ $totalPayment }} $ </span>
+            </h3>
+        </center>
     </div>
 
 

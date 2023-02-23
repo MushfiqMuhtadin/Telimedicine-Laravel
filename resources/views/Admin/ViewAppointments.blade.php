@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
-    <title>Document</title>
+    <title>Appointments List</title>
 </head>
 <style>
     th,
@@ -25,7 +25,7 @@
 <body style="background-color: rgb(227, 251, 235)">
     <br>
     <center>
-        <h1 class="text-primary">Doctors List</h1>
+        <h1 class="text-primary">Appointments List</h1>
     </center>
 
     <br>
@@ -79,7 +79,8 @@
             </tbody>
         </table>
         <center>
-            <h2 class="text-success">Total Appointments =<span class=" fs-1 text-primary"> {{ $totalappointments }} </span>
+            <h2 class="text-success">Total Appointments =<span class=" fs-1 text-primary"> {{ $totalappointments }}
+                </span>
                 Appointments </h3>
         </center>
         <br>
