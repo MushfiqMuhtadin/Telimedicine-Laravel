@@ -90,7 +90,7 @@
                                 <div class="heroLinks d-flex flex-wrap align-items-center">
                                     <a class="custom-link me-4" href="#about" data-hover="Learn More">Learn More</a>
 
-                                    <p class="contact-phone mb-0"><i class="bi-phone"></i> 010-020-0340</p>
+                                    <p class="contact-phone mb-0"><i class="bi-phone"></i> 01632103754</p>
                                 </div>
                             </div>
                         </div>

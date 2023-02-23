@@ -52,34 +52,34 @@ Route::post('Patient-reg-post', [CustomAuthController::class, 'PatientRegPost'])
 //PATIENT ROUTE START
 
 //patient dashboard view
-Route::get('patient/dashboard', [PatientController::class, 'PatientDashboard'])->name('patient/dashboard');
+Route::get('patient/dashboard', [PatientController::class, 'PatientDashboard'])->name('patient/dashboard')->middleware('patient');
 
 //patient profile view with patientid passed through session
-Route::get('patient/dashboard/profile/{id}', [PatientController::class, 'PatientProfile'])->name('patient.profile');
+Route::get('patient/dashboard/profile/{id}', [PatientController::class, 'PatientProfile'])->name('patient.profile')->middleware('patient');
 
 ////patient edit profile view passed patient id
-Route::get('/patient/dashboard/profile/{id}/edit',  [PatientController::class, 'PatientEditProfile'])->name('patient.edit');
+Route::get('/patient/dashboard/profile/{id}/edit',  [PatientController::class, 'PatientEditProfile'])->name('patient.edit')->middleware('patient');
 
 //patient update profile submit
-Route::put('/patient/dashboard/profile/{id}/update',  [PatientController::class, 'PatientUpdateProfile'])->name('patientprofile.update');
+Route::put('/patient/dashboard/profile/{id}/update',  [PatientController::class, 'PatientUpdateProfile'])->name('patientprofile.update')->middleware('patient');
 
 //patient checkout
-Route::get('checkout/{id}', [PatientController::class, 'checkout'])->name('checkout');
+Route::get('checkout/{id}', [PatientController::class, 'checkout'])->name('checkout')->middleware('patient');
 
 //patient checkout post
-Route::post('checkoutpost', [PatientController::class, 'checkoutpost'])->name('checkoutpost');
+Route::post('checkoutpost', [PatientController::class, 'checkoutpost'])->name('checkoutpost')->middleware('patient');
 
 
 //payment history get
-Route::get('payment.history/{id}', [PatientController::class, 'paymenthistory'])->name('payment.history');
+Route::get('payment.history/{id}', [PatientController::class, 'paymenthistory'])->name('payment.history')->middleware('patient');
 
 //patient get messages
-Route::get('patient/messages/{id}', [PatientController::class, 'patientmessage'])->name('patient.messages');
+Route::get('patient/messages/{id}', [PatientController::class, 'patientmessage'])->name('patient.messages')->middleware('patient');
 
 //patient get prescription
-Route::get('patient/prescription/{id}', [PatientController::class, 'prescription'])->name('patient.prescription');
+Route::get('patient/prescription/{id}', [PatientController::class, 'prescription'])->name('patient.prescription')->middleware('patient');
 
-Route::get('/prescriptions/{id}/download', [PatientController::class, 'prescriptionDownload'])->name('prescriptions.download');
+Route::get('/prescriptions/{id}/download', [PatientController::class, 'prescriptionDownload'])->name('prescriptions.download')->middleware('patient');
 
 
 
@@ -89,13 +89,13 @@ Route::get('/prescriptions/{id}/download', [PatientController::class, 'prescript
 //APPOINTMENT ROUTE START
 
 //appointment view passed doctor id 
-Route::get('appointments/{id}', [AppointmentController::class, 'Appointment'])->name('appointments.create');
+Route::get('appointments/{id}', [AppointmentController::class, 'Appointment'])->name('appointments.create')->middleware('patient');
 
 //appointment submit
-Route::post('appointment-created', [AppointmentController::class, 'CreateAppointment'])->name('appointment-created');
+Route::post('appointment-created', [AppointmentController::class, 'CreateAppointment'])->name('appointment-created')->middleware('patient');
 
 //appointment history
-Route::get('appointment.history/{id}', [AppointmentController::class, 'AppointmentHistory'])->name('appointment.history');
+Route::get('appointment.history/{id}', [AppointmentController::class, 'AppointmentHistory'])->name('appointment.history')->middleware('patient');
 
 
 //APPOINTMENT ROUTE END
@@ -107,49 +107,49 @@ Route::get('appointment.history/{id}', [AppointmentController::class, 'Appointme
 
 
 //Admin dashboard view
-Route::get('admin/dashboard', [AdminController::class, 'AdminDashboard'])->name('admin/dashboard');
+Route::get('admin/dashboard', [AdminController::class, 'AdminDashboard'])->name('admin/dashboard')->middleware('admin');
 
 //createpackage view
-Route::get('CreatepackageView', [AdminController::class, 'CreatepackageView'])->name('CreatepackageView');
+Route::get('CreatepackageView', [AdminController::class, 'CreatepackageView'])->name('CreatepackageView')->middleware('admin');
 
 //createpackage post
-Route::post('CreatepackagePost', [AdminController::class, 'CreatepackagePost'])->name('CreatepackagePost');
+Route::post('CreatepackagePost', [AdminController::class, 'CreatepackagePost'])->name('CreatepackagePost')->middleware('admin');
 
 //viewpackage post
-Route::get('ViewpackageGet', [AdminController::class, 'ViewpackageGet'])->name('ViewpackageGet');
+Route::get('ViewpackageGet', [AdminController::class, 'ViewpackageGet'])->name('ViewpackageGet')->middleware('admin');
 
 //Editpackage get
-Route::get('EditpackageGet/{id}', [AdminController::class, 'EditpackageGet'])->name('EditpackageGet');
+Route::get('EditpackageGet/{id}', [AdminController::class, 'EditpackageGet'])->name('EditpackageGet')->middleware('admin');
 
 //UpdateID
-Route::put('update.package/{id}', [AdminController::class, 'Updatepackage'])->name('update.package');
+Route::put('update.package/{id}', [AdminController::class, 'Updatepackage'])->name('update.package')->middleware('admin');
 
 //Deleteid
-Route::get('delete.package/{id}', [AdminController::class, 'Deletepackage'])->name('delete.package');
+Route::get('delete.package/{id}', [AdminController::class, 'Deletepackage'])->name('delete.package')->middleware('admin');
 
 //earnings
-Route::get('earning/history', [AdminController::class, 'earninghistory'])->name('earning.history');
+Route::get('earning/history', [AdminController::class, 'earninghistory'])->name('earning.history')->middleware('admin');
 
 // total patient
-Route::get('show/patient', [AdminController::class, 'showpatient'])->name('show.patient');
+Route::get('show/patient', [AdminController::class, 'showpatient'])->name('show.patient')->middleware('admin');
 
 //total doctor
-Route::get('show/doctor', [AdminController::class, 'showdoctor'])->name('show.doctor');
+Route::get('show/doctor', [AdminController::class, 'showdoctor'])->name('show.doctor')->middleware('admin');
 
 //total appointment
-Route::get('show/appointment', [AdminController::class, 'showappointment'])->name('show.appointment');
+Route::get('show/appointment', [AdminController::class, 'showappointment'])->name('show.appointment')->middleware('admin');
 
 //create admin view
-Route::get('create.admin', [AdminController::class, 'getadmin'])->name('create.admin');
+Route::get('create.admin', [AdminController::class, 'getadmin'])->name('create.admin')->middleware('admin');
 
 //Admin registration submit
-Route::post('post.admin', [AdminController::class, 'postadmin'])->name('post.admin');
+Route::post('post.admin', [AdminController::class, 'postadmin'])->name('post.admin')->middleware('admin');
 
 //Admin registration submit
-Route::post('contact.us', [AdminController::class, 'contactus'])->name('contact.us');
+Route::post('contact.us', [AdminController::class, 'contactus'])->name('contact.us')->middleware('admin');
 
 // total patient
-Route::get('show.contact', [AdminController::class, 'showcontact'])->name('show.contact');
+Route::get('show.contact', [AdminController::class, 'showcontact'])->name('show.contact')->middleware('admin');
 
 
 
@@ -161,30 +161,30 @@ Route::get('show.contact', [AdminController::class, 'showcontact'])->name('show.
 
 
 //for viewing doctor
-Route::get('DoctorsList', [DoctorController::class, 'Doctorslist'])->name('DoctorsList');
+Route::get('DoctorsList', [DoctorController::class, 'Doctorslist'])->name('DoctorsList')->middleware('doctor');
 
 //for viewing doctor
-Route::get('doctor/dashboard/{Did}', [DoctorController::class, 'dashboard'])->name('doctor.dashboard');
+Route::get('doctor/dashboard/{Did}', [DoctorController::class, 'dashboard'])->name('doctor.dashboard')->middleware('doctor');
 
 //doctor profile view with patientid passed through session
-Route::get('doctor/dashboard/profile/{id}', [DoctorController::class, 'DoctorProfile'])->name('doctor.profile');
+Route::get('doctor/dashboard/profile/{id}', [DoctorController::class, 'DoctorProfile'])->name('doctor.profile')->middleware('doctor');
 
-////patient edit profile view passed patient id
-Route::get('/doctor/dashboard/profile/{id}/edit',  [DoctorController::class, 'DoctorEditProfile'])->name('doctor.edit');
+////doctor edit profile view passed patient id
+Route::get('/doctor/dashboard/profile/{id}/edit',  [DoctorController::class, 'DoctorEditProfile'])->name('doctor.edit')->middleware('doctor');
 
-//patient update profile submit
-Route::put('/doctor/dashboard/profile/{id}/update',  [DoctorController::class, 'doctorUpdateProfile'])->name('doctorprofile.update');
+//doctor update profile submit
+Route::put('/doctor/dashboard/profile/{id}/update',  [DoctorController::class, 'doctorUpdateProfile'])->name('doctorprofile.update')->middleware('doctor');
 
 
-Route::get('appointments/approve/{id}', [DoctorController::class, 'approve'])->name('appointments.approve');
+Route::get('appointments/approve/{id}', [DoctorController::class, 'approve'])->name('appointments.approve')->middleware('doctor');
 
-Route::get('appointments/delete/{id}', [DoctorController::class, 'delete'])->name('appointments.delete');
+Route::get('appointments/delete/{id}', [DoctorController::class, 'delete'])->name('appointments.delete')->middleware('doctor');
 
-Route::post('appointments/sendmessage', [DoctorController::class, 'sendmessage'])->name('appointments.sendmessage');
+Route::post('appointments/sendmessage', [DoctorController::class, 'sendmessage'])->name('appointments.sendmessage')->middleware('doctor');
 
-Route::get('prescription/appointment/{id}', [DoctorController::class, 'prescription'])->name('prescription.appointment');
+Route::get('prescription/appointment/{id}', [DoctorController::class, 'prescription'])->name('prescription.appointment')->middleware('doctor');
 
-Route::post('prescription/send', [DoctorController::class, 'SendPrescription'])->name('prescription.send');
+Route::post('prescription/send', [DoctorController::class, 'SendPrescription'])->name('prescription.send')->middleware('doctor');
 
 
 

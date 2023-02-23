@@ -40,18 +40,18 @@
             <div class="row mb-3">
                 <div class="col-md-6 form-group">
                     <label class="mt-3 fs-5 fw-semibold text-primary" for="medicine" class="form-label">Medicine</label>
-                    <textarea class="form-control" id="medicine" name="medicine"></textarea>
+                    <textarea class="form-control" id="medicine" name="medicine" required></textarea>
                 </div>
                 <div class="col-md-6 form-group">
                     <label class="mt-3 fs-5 fw-semibold text-primary" for="test" class="form-label">Test</label>
-                    <textarea class="form-control" id="test" name="test"></textarea>
+                    <textarea class="form-control" id="test" name="test" required ></textarea>
                 </div>
             </div>
             <div class="row mb-3 ">
                 <div class="col-md-12 form-group">
                     <label class="mt-3 fs-5 fw-semibold text-primary" for="suggestion"
                         class="form-label">Suggestion</label>
-                    <textarea class="form-control" id="suggestion" name="suggestion"></textarea>
+                    <textarea class="form-control" id="suggestion" name="suggestion" required></textarea>
                 </div>
             </div>
             <div class="row">
