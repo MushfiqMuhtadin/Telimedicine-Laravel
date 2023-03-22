@@ -359,8 +359,10 @@
                                     <!-- Card Body -->
                                     <div class="card-body"style="height: 350px; overflow: scroll;">
                                         <div class="chart-area">
+                                              
                                             <div class="table-responsive">
                                                 @foreach ($sendlink as $sendlink)
+                                                @if ($sendlink->appointmentstatus === 1)
                                                     <table class="table  table-bordered table-hover">
                                                         <thead class="table-primary">
                                                             <tr class="text-dark">
@@ -384,7 +386,7 @@
                                                                 <td>{{ $sendlink->appointmentstatus == 0 ? 'Pending' : 'Approved' }}
                                                                 </td>
                                                                 <td>
-                                                                    @if ($sendlink->appointmentstatus === 1)
+                                                                  
                                                                         <form
                                                                             action="{{ route('appointments.sendmessage') }}"
                                                                             method="post">
@@ -400,13 +402,15 @@
                                                                             <button class="btn btn-primary btn-s"
                                                                                 type="submit">Send Link</button>
                                                                         </form>
-                                                                    @endif
+                                                                   
                                                                 </td>
 
                                                             </tr>
                                                         </tbody>
                                                     </table>
+                                                     @endif
                                                 @endforeach
+                                                
                                             </div>
                                         </div>
                                     </div>
@@ -426,6 +430,7 @@
                                         <div class="chart-area">
                                             <div class="table-responsive">
                                                 @foreach ($prescription as $prescription)
+                                                 @if ($prescription->appointmentstatus === 1 )
                                                     <table class="table  table-bordered table-hover">
                                                         <thead class="table-primary">
                                                             <tr class="text-dark">
@@ -450,15 +455,16 @@
                                                                 </td>
                                                                 <td
                                                                     class="d-flex justify-content-center align-items-center p-4">
-                                                                    @if ($prescription->appointmentstatus === 1)
+                                                                   
                                                                         <a href="{{ route('prescription.appointment', $prescription->id) }}"
                                                                             class="btn btn-success  mx-2">Prescribe</a>
-                                                                    @endif
+                                                                   
                                                                 </td>
 
                                                             </tr>
                                                         </tbody>
                                                     </table>
+                                                     @endif
                                                 @endforeach
                                             </div>
 
